@@ -1,9 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
   Table,
@@ -15,64 +14,50 @@ import {
 } from '@/components/ui/table';
 
 const Vehicles = () => {
+  const [selectedBrand, setSelectedBrand] = useState('all');
+
   const vehicles = [
     {
-      image: '🚗',
       brand: 'Toyota',
       vehicleType: 'Car',
-      rentalPlans: 'Daily, Weekly, Monthly',
+      rentalPlans: '12 Hour: PKR 5,000-6,500, 2 Day: PKR 9,500-12,500, 3 Day: PKR 14,000-18,000, 1 Week: PKR 28,000-36,000',
       status: 'Available'
     },
     {
-      image: '🚙',
       brand: 'Honda',
       vehicleType: 'Car',
-      rentalPlans: 'Daily, Weekly',
+      rentalPlans: '12 Hour: PKR 5,000-6,500, 2 Day: PKR 9,500-12,500',
       status: 'Unavailable'
     },
     {
-      image: '🚐',
-      brand: 'Ford',
-      vehicleType: 'Van',
-      rentalPlans: 'Daily, Weekly, Monthly',
-      status: 'Available'
-    },
-    {
-      image: '🚌',
-      brand: 'Mercedes',
-      vehicleType: 'Bus',
-      rentalPlans: 'Daily',
-      status: 'Available'
-    },
-    {
-      image: '🚐',
-      brand: 'Volkswagen',
+      brand: 'Yutong',
       vehicleType: 'Mini Bus',
-      rentalPlans: 'Daily, Weekly',
-      status: 'Unavailable'
+      rentalPlans: '12 Hour: PKR 17,000-19,500, 2 Day: PKR 32,000-36,000, 3 Day: PKR 46,000-51,000, 1 Week: PKR 90,000-99,000',
+      status: 'Available'
     },
     {
-      image: '🛥️',
-      brand: 'Hyundai',
+      brand: 'MAN ⭐',
+      vehicleType: 'Bus',
+      rentalPlans: '12 Hour: PKR 25,000-29,000, 2 Day: PKR 48,000-56,000, 3 Day: PKR 70,000-81,000, 1 Week: PKR 130,000-144,000',
+      status: 'Available'
+    },
+    {
+      brand: 'Toyota Coaster',
       vehicleType: 'Coaster',
-      rentalPlans: 'Daily',
-      status: 'Available'
-    },
-    {
-      image: '🚙',
-      brand: 'Jeep',
-      vehicleType: 'Car',
-      rentalPlans: 'Daily, Weekly, Monthly',
-      status: 'Available'
-    },
-    {
-      image: '🚗',
-      brand: 'Nissan',
-      vehicleType: 'Car',
-      rentalPlans: 'Daily, Weekly',
+      rentalPlans: '12 Hour: PKR 12,000-14,500, 2 Day: PKR 22,500-26,500',
       status: 'Unavailable'
+    },
+    {
+      brand: 'Hyundai',
+      vehicleType: 'Car',
+      rentalPlans: '12 Hour: PKR 5,000-6,500, 3 Day: PKR 14,000-18,000',
+      status: 'Available'
     }
   ];
+
+  const filteredVehicles = selectedBrand === 'all' ? vehicles : vehicles.filter(vehicle => 
+    vehicle.brand.toLowerCase().includes(selectedBrand.toLowerCase())
+  );
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -88,52 +73,23 @@ const Vehicles = () => {
   return (
     <AdminLayout>
       <div className="p-6">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Manage Cars</h1>
-            <p className="text-gray-600 mt-2">View and manage all vehicles in the fleet</p>
-          </div>
-          <Button className="bg-blue-600 hover:bg-blue-700">
-            Add Car
-          </Button>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Manage Cars</h1>
+          <p className="text-gray-600 mt-2">View and manage all vehicles in the fleet</p>
         </div>
 
         {/* Filters */}
         <div className="flex flex-wrap gap-4 mb-6">
-          <Select defaultValue="all">
+          <Select value={selectedBrand} onValueChange={setSelectedBrand}>
             <SelectTrigger className="w-48">
               <SelectValue placeholder="Brand" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Brands</SelectItem>
               <SelectItem value="toyota">Toyota</SelectItem>
-              <SelectItem value="honda">Honda</SelectItem>
-              <SelectItem value="ford">Ford</SelectItem>
-              <SelectItem value="mercedes">Mercedes</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select defaultValue="all">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Vehicle Type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="car">Car</SelectItem>
-              <SelectItem value="van">Van</SelectItem>
-              <SelectItem value="bus">Bus</SelectItem>
-              <SelectItem value="coaster">Coaster</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select defaultValue="all">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Availability" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Status</SelectItem>
-              <SelectItem value="available">Available</SelectItem>
-              <SelectItem value="unavailable">Unavailable</SelectItem>
+              <SelectItem value="hyundai">Hyundai</SelectItem>
+              <SelectItem value="man">MAN</SelectItem>
+              <SelectItem value="yutong">Yutong</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -146,39 +102,19 @@ const Vehicles = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Image</TableHead>
                   <TableHead>Brand</TableHead>
                   <TableHead>Vehicle Type</TableHead>
                   <TableHead>Rental Plans</TableHead>
                   <TableHead>Status</TableHead>
-                  <TableHead>Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {vehicles.map((vehicle, index) => (
+                {filteredVehicles.map((vehicle, index) => (
                   <TableRow key={index}>
-                    <TableCell>
-                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">
-                        {vehicle.image}
-                      </div>
-                    </TableCell>
                     <TableCell className="font-medium">{vehicle.brand}</TableCell>
                     <TableCell className="text-blue-600">{vehicle.vehicleType}</TableCell>
-                    <TableCell className="text-blue-600">{vehicle.rentalPlans}</TableCell>
+                    <TableCell className="text-blue-600 text-sm">{vehicle.rentalPlans}</TableCell>
                     <TableCell>{getStatusBadge(vehicle.status)}</TableCell>
-                    <TableCell>
-                      <div className="flex space-x-2">
-                        <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 hover:bg-blue-50">
-                          Edit
-                        </Button>
-                        <Button variant="outline" size="sm" className="text-red-600 border-red-600 hover:bg-red-50">
-                          Delete
-                        </Button>
-                        <Button variant="outline" size="sm" className="text-gray-600 border-gray-600 hover:bg-gray-50">
-                          View
-                        </Button>
-                      </div>
-                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

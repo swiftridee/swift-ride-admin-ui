@@ -17,55 +17,55 @@ const Bookings = () => {
     {
       id: '#12345',
       userName: 'Sophia Clark',
-      vehicle: 'Sedan',
-      rentalPlan: 'Weekly',
+      vehicle: 'Toyota',
+      rentalPlan: '1 Week',
       driverOption: 'With Driver',
-      price: '$350',
+      price: 'PKR 36,000',
       status: 'Completed'
     },
     {
       id: '#12346',
       userName: 'Ethan Bennett',
-      vehicle: 'SUV',
-      rentalPlan: 'Daily',
+      vehicle: 'Yutong',
+      rentalPlan: '12 Hour',
       driverOption: 'Without Driver',
-      price: '$120',
+      price: 'PKR 17,000',
       status: 'Pending'
     },
     {
       id: '#12347',
       userName: 'Olivia Carter',
-      vehicle: 'Sedan',
-      rentalPlan: 'Monthly',
+      vehicle: 'Honda',
+      rentalPlan: '3 Day',
       driverOption: 'With Driver',
-      price: '$1200',
+      price: 'PKR 18,000',
       status: 'Completed'
     },
     {
       id: '#12348',
       userName: 'Liam Davis',
-      vehicle: 'Truck',
-      rentalPlan: 'Weekly',
+      vehicle: 'MAN ⭐',
+      rentalPlan: '2 Day',
       driverOption: 'Without Driver',
-      price: '$400',
+      price: 'PKR 48,000',
       status: 'Cancelled'
     },
     {
       id: '#12349',
       userName: 'Ava Evans',
-      vehicle: 'SUV',
-      rentalPlan: 'Daily',
+      vehicle: 'Toyota Coaster',
+      rentalPlan: '12 Hour',
       driverOption: 'With Driver',
-      price: '$150',
+      price: 'PKR 14,500',
       status: 'Pending'
     },
     {
       id: '#12350',
       userName: 'Noah Foster',
-      vehicle: 'Sedan',
-      rentalPlan: 'Monthly',
+      vehicle: 'BMW ⭐',
+      rentalPlan: '1 Week',
       driverOption: 'Without Driver',
-      price: '$1000',
+      price: 'PKR 28,000',
       status: 'Completed'
     }
   ];

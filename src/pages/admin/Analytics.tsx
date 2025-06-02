@@ -1,11 +1,13 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 const Analytics = () => {
+  const [selectedDay, setSelectedDay] = useState('today');
+
   const bookingTrendsData = [
     { day: 'Mon', bookings: 245 },
     { day: 'Tue', bookings: 312 },
@@ -17,11 +19,11 @@ const Analytics = () => {
   ];
 
   const popularVehiclesData = [
-    { vehicle: 'Sedan', count: 89 },
-    { vehicle: 'SUV', count: 76 },
-    { vehicle: 'Truck', count: 45 },
-    { vehicle: 'Van', count: 32 },
-    { vehicle: 'Motorcycle', count: 23 }
+    { vehicle: 'Toyota', count: 89 },
+    { vehicle: 'Honda', count: 76 },
+    { vehicle: 'Yutong', count: 45 },
+    { vehicle: 'MAN ⭐', count: 32 },
+    { vehicle: 'Toyota Coaster', count: 23 }
   ];
 
   const revenueData = [
@@ -39,6 +41,18 @@ const Analytics = () => {
     { month: 'Dec', revenue: 34000 }
   ];
 
+  // Update data based on selected day
+  const getUpdatedStats = () => {
+    const multiplier = selectedDay === 'today' ? 1 : selectedDay === 'yesterday' ? 0.8 : 1.2;
+    return {
+      bookings: Math.round(1200 * multiplier),
+      vehicles: Math.round(150 * multiplier),
+      revenue: Math.round(25000 * multiplier)
+    };
+  };
+
+  const stats = getUpdatedStats();
+
   return (
     <AdminLayout>
       <div className="p-6">
@@ -47,43 +61,16 @@ const Analytics = () => {
           <p className="text-gray-600 mt-2">Track key performance indicators and trends for Swift Ride.</p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-4 mb-8">
-          <Select defaultValue="30days">
+        {/* Filter by Day */}
+        <div className="mb-8">
+          <Select value={selectedDay} onValueChange={setSelectedDay}>
             <SelectTrigger className="w-48">
-              <SelectValue placeholder="Date Range" />
+              <SelectValue placeholder="Filter by Day" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="7days">Last 7 days</SelectItem>
-              <SelectItem value="30days">Last 30 days</SelectItem>
-              <SelectItem value="90days">Last 90 days</SelectItem>
-              <SelectItem value="1year">Last year</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select defaultValue="all">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Vehicle Type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="sedan">Sedan</SelectItem>
-              <SelectItem value="suv">SUV</SelectItem>
-              <SelectItem value="truck">Truck</SelectItem>
-              <SelectItem value="van">Van</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select defaultValue="all">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="City" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Cities</SelectItem>
-              <SelectItem value="ny">New York</SelectItem>
-              <SelectItem value="la">Los Angeles</SelectItem>
-              <SelectItem value="chicago">Chicago</SelectItem>
-              <SelectItem value="houston">Houston</SelectItem>
+              <SelectItem value="today">Today</SelectItem>
+              <SelectItem value="yesterday">Yesterday</SelectItem>
+              <SelectItem value="tomorrow">Tomorrow</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -95,9 +82,9 @@ const Analytics = () => {
             <CardHeader>
               <CardTitle>Booking Trends</CardTitle>
               <div className="space-y-2">
-                <div className="text-2xl font-bold">1200</div>
+                <div className="text-2xl font-bold">{stats.bookings}</div>
                 <p className="text-sm text-gray-600">
-                  This Month <span className="text-green-600">+15%</span>
+                  Selected Day <span className="text-green-600">+15%</span>
                 </p>
               </div>
             </CardHeader>
@@ -124,9 +111,9 @@ const Analytics = () => {
             <CardHeader>
               <CardTitle>Popular Vehicles</CardTitle>
               <div className="space-y-2">
-                <div className="text-2xl font-bold">150</div>
+                <div className="text-2xl font-bold">{stats.vehicles}</div>
                 <p className="text-sm text-gray-600">
-                  This Month <span className="text-green-600">+10%</span>
+                  Selected Day <span className="text-green-600">+10%</span>
                 </p>
               </div>
             </CardHeader>
@@ -155,9 +142,9 @@ const Analytics = () => {
             <CardHeader>
               <CardTitle>Revenue Growth</CardTitle>
               <div className="space-y-2">
-                <div className="text-2xl font-bold">$25,000</div>
+                <div className="text-2xl font-bold">PKR {stats.revenue.toLocaleString()}</div>
                 <p className="text-sm text-gray-600">
-                  This Year <span className="text-green-600">+20%</span>
+                  Selected Day <span className="text-green-600">+20%</span>
                 </p>
               </div>
             </CardHeader>

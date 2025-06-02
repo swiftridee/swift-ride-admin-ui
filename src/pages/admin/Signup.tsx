@@ -34,12 +34,12 @@ const AdminSignup = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold text-lg">
               SR
             </div>
-            <span className="ml-2 text-xl font-semibold">Swift Ride</span>
+            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-900">Admin Registration</CardTitle>
+          <CardTitle className="text-2xl font-bold text-gray-900">Admin Signup</CardTitle>
           <p className="text-gray-600">Create your admin account</p>
         </CardHeader>
         <CardContent>
@@ -88,7 +88,7 @@ const AdminSignup = () => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+            <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600">
               Register
             </Button>
           </form>

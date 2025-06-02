@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,11 +8,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
     console.log('Login attempt:', { email, password });
+    // Redirect to dashboard after login
+    navigate('/admin/dashboard');
   };
 
   return (
@@ -20,10 +22,10 @@ const AdminLogin = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold text-lg">
               SR
             </div>
-            <span className="ml-2 text-xl font-semibold">Swift Ride</span>
+            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
           </div>
           <CardTitle className="text-2xl font-bold text-gray-900">Admin Login</CardTitle>
           <p className="text-gray-600">Sign in to your admin account</p>
@@ -58,7 +60,7 @@ const AdminLogin = () => {
                 Forgot password?
               </Link>
             </div>
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+            <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600">
               Login
             </Button>
           </form>

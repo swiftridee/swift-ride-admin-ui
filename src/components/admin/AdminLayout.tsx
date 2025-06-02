@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   DropdownMenu, 
@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ interface AdminLayoutProps {
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [
@@ -32,7 +33,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   const handleLogout = () => {
     console.log('Logging out...');
-    // Handle logout logic
+    navigate('/admin/login');
   };
 
   return (
@@ -51,10 +52,10 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                 </SheetTrigger>
                 <SheetContent side="left" className="w-64">
                   <div className="flex items-center mb-8">
-                    <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold">
                       SR
                     </div>
-                    <span className="ml-2 text-xl font-semibold">Swift Ride</span>
+                    <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
                   </div>
                   <nav className="space-y-2">
                     {navigation.map((item) => (
@@ -76,10 +77,10 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               </Sheet>
 
               <Link to="/admin/dashboard" className="flex items-center">
-                <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold">
                   SR
                 </div>
-                <span className="ml-2 text-xl font-semibold">Swift Ride</span>
+                <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
               </Link>
             </div>
 
@@ -105,13 +106,14 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarFallback className="bg-blue-600 text-white">A</AvatarFallback>
+                    <AvatarFallback className="bg-gradient-to-r from-blue-600 to-red-500 text-white">A</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end">
-                <DropdownMenuItem onClick={handleLogout} className="text-red-600">
-                  Logout
+              <DropdownMenuContent className="w-56 bg-white" align="end">
+                <DropdownMenuItem onClick={handleLogout} className="text-red-600 hover:bg-red-50 cursor-pointer">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span className="font-medium">Logout</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
