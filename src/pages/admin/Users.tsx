@@ -18,48 +18,64 @@ const Users = () => {
       name: 'Sophia Carter',
       email: 'sophia.carter@email.com',
       city: 'Karachi',
+      gender: 'Female',
+      cnic: '42201-0234567-8',
       status: 'Active'
     },
     {
       name: 'Ethan Bennett',
       email: 'ethan.bennett@email.com',
       city: 'Lahore',
+      gender: 'Male',
+      cnic: '35202-0345678-9',
       status: 'Active'
     },
     {
       name: 'Olivia Hayes',
       email: 'olivia.hayes@email.com',
       city: 'Faisalabad',
+      gender: 'Female',
+      cnic: '38103-0456789-0',
       status: 'Blocked'
     },
     {
       name: 'Liam Foster',
       email: 'liam.foster@email.com',
       city: 'Rawalpindi',
+      gender: 'Male',
+      cnic: '37405-0567890-1',
       status: 'Active'
     },
     {
       name: 'Ava Morgan',
       email: 'ava.morgan@email.com',
       city: 'Islamabad',
+      gender: 'Female',
+      cnic: '61101-0678901-2',
       status: 'Active'
     },
     {
       name: 'Noah Reed',
       email: 'noah.reed@email.com',
       city: 'Gujranwala',
+      gender: 'Male',
+      cnic: '34567-0789012-3',
       status: 'Blocked'
     },
     {
       name: 'Isabella Wright',
       email: 'isabella.wright@email.com',
       city: 'Peshawar',
+      gender: 'Female',
+      cnic: '17301-0890123-4',
       status: 'Active'
     },
     {
       name: 'Jackson Harper',
       email: 'jackson.harper@email.com',
       city: 'Multan',
+      gender: 'Male',
+      cnic: '36104-0901234-5',
       status: 'Active'
     }
   ];
@@ -94,6 +110,8 @@ const Users = () => {
                   <TableHead>Name</TableHead>
                   <TableHead>Email</TableHead>
                   <TableHead>City</TableHead>
+                  <TableHead>Gender</TableHead>
+                  <TableHead>CNIC</TableHead>
                   <TableHead>Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -103,6 +121,8 @@ const Users = () => {
                     <TableCell className="font-medium">{user.name}</TableCell>
                     <TableCell className="text-blue-600">{user.email}</TableCell>
                     <TableCell className="text-blue-600">{user.city}</TableCell>
+                    <TableCell>{user.gender}</TableCell>
+                    <TableCell className="font-mono">{user.cnic}</TableCell>
                     <TableCell>{getStatusBadge(user.status)}</TableCell>
                   </TableRow>
                 ))}

@@ -44,7 +44,7 @@ const Bookings = () => {
     {
       id: '#12348',
       userName: 'Liam Davis',
-      vehicle: 'MAN ⭐',
+      vehicle: 'MAN',
       rentalPlan: '2 Day',
       driverOption: 'Without Driver',
       price: 'PKR 48,000',
@@ -62,7 +62,7 @@ const Bookings = () => {
     {
       id: '#12350',
       userName: 'Noah Foster',
-      vehicle: 'BMW ⭐',
+      vehicle: 'BMW',
       rentalPlan: '1 Week',
       driverOption: 'Without Driver',
       price: 'PKR 28,000',

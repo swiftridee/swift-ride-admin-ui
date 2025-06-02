@@ -37,7 +37,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50" style={{ fontFamily: 'Poppins, sans-serif' }}>
       {/* Top Navigation */}
       <header className="bg-white shadow-sm border-b">
         <div className="px-4 sm:px-6 lg:px-8">
@@ -52,10 +52,10 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                 </SheetTrigger>
                 <SheetContent side="left" className="w-64">
                   <div className="flex items-center mb-8">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold">
-                      SR
-                    </div>
-                    <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
+                    <span className="text-xl font-normal">
+                      <span style={{ color: 'rgb(79, 158, 234)' }}>Swift</span>
+                      <span style={{ color: 'rgb(255, 114, 94)' }}>Ride</span>
+                    </span>
                   </div>
                   <nav className="space-y-2">
                     {navigation.map((item) => (
@@ -64,9 +64,12 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                         to={item.href}
                         className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                           isActive(item.href)
-                            ? 'bg-blue-100 text-blue-700'
+                            ? 'text-blue-700'
                             : 'text-gray-700 hover:bg-gray-100'
                         }`}
+                        style={{ 
+                          backgroundColor: isActive(item.href) ? 'rgba(79, 158, 234, 0.1)' : 'transparent'
+                        }}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -77,10 +80,10 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               </Sheet>
 
               <Link to="/admin/dashboard" className="flex items-center">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-red-500 rounded flex items-center justify-center text-white font-bold">
-                  SR
-                </div>
-                <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">Swift Ride</span>
+                <span className="text-xl font-normal">
+                  <span style={{ color: 'rgb(79, 158, 234)' }}>Swift</span>
+                  <span style={{ color: 'rgb(255, 114, 94)' }}>Ride</span>
+                </span>
               </Link>
             </div>
 
@@ -92,9 +95,12 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                   to={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive(item.href)
-                      ? 'text-blue-700 bg-blue-50'
+                      ? 'text-blue-700'
                       : 'text-gray-700 hover:text-gray-900'
                   }`}
+                  style={{ 
+                    backgroundColor: isActive(item.href) ? 'rgba(79, 158, 234, 0.1)' : 'transparent'
+                  }}
                 >
                   {item.name}
                 </Link>
@@ -106,7 +112,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarFallback className="bg-gradient-to-r from-blue-600 to-red-500 text-white">A</AvatarFallback>
+                    <AvatarFallback style={{ backgroundColor: 'rgb(79, 158, 234)' }} className="text-white">A</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>

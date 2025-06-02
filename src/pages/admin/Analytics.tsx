@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 const Analytics = () => {
-  const [selectedDay, setSelectedDay] = useState('today');
+  const [selectedPeriod, setSelectedPeriod] = useState('today');
 
   const bookingTrendsData = [
     { day: 'Mon', bookings: 245 },
@@ -22,7 +22,7 @@ const Analytics = () => {
     { vehicle: 'Toyota', count: 89 },
     { vehicle: 'Honda', count: 76 },
     { vehicle: 'Yutong', count: 45 },
-    { vehicle: 'MAN ⭐', count: 32 },
+    { vehicle: 'MAN', count: 32 },
     { vehicle: 'Toyota Coaster', count: 23 }
   ];
 
@@ -41,12 +41,19 @@ const Analytics = () => {
     { month: 'Dec', revenue: 34000 }
   ];
 
-  // Update data based on selected day
+  // Update data based on selected period
   const getUpdatedStats = () => {
-    const multiplier = selectedDay === 'today' ? 1 : selectedDay === 'yesterday' ? 0.8 : 1.2;
+    const multipliers = {
+      'today': 1,
+      'last-week': 7.2,
+      'last-month': 28.5,
+      'last-year': 365
+    };
+    const multiplier = multipliers[selectedPeriod as keyof typeof multipliers] || 1;
+    
     return {
       bookings: Math.round(1200 * multiplier),
-      vehicles: Math.round(150 * multiplier),
+      vehicles: Math.round(150 * (multiplier * 0.1 + 0.9)),
       revenue: Math.round(25000 * multiplier)
     };
   };
@@ -61,16 +68,17 @@ const Analytics = () => {
           <p className="text-gray-600 mt-2">Track key performance indicators and trends for Swift Ride.</p>
         </div>
 
-        {/* Filter by Day */}
+        {/* Filter by Period */}
         <div className="mb-8">
-          <Select value={selectedDay} onValueChange={setSelectedDay}>
+          <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
             <SelectTrigger className="w-48">
-              <SelectValue placeholder="Filter by Day" />
+              <SelectValue placeholder="Filter by Period" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="yesterday">Yesterday</SelectItem>
-              <SelectItem value="tomorrow">Tomorrow</SelectItem>
+              <SelectItem value="last-week">Last Week</SelectItem>
+              <SelectItem value="last-month">Last 1 Month</SelectItem>
+              <SelectItem value="last-year">Last 1 Year</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -84,7 +92,7 @@ const Analytics = () => {
               <div className="space-y-2">
                 <div className="text-2xl font-bold">{stats.bookings}</div>
                 <p className="text-sm text-gray-600">
-                  Selected Day <span className="text-green-600">+15%</span>
+                  Selected Period <span className="text-green-600">+15%</span>
                 </p>
               </div>
             </CardHeader>
@@ -113,7 +121,7 @@ const Analytics = () => {
               <div className="space-y-2">
                 <div className="text-2xl font-bold">{stats.vehicles}</div>
                 <p className="text-sm text-gray-600">
-                  Selected Day <span className="text-green-600">+10%</span>
+                  Selected Period <span className="text-green-600">+10%</span>
                 </p>
               </div>
             </CardHeader>
@@ -125,8 +133,11 @@ const Analytics = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-200 rounded-full">
                         <div 
-                          className="h-2 bg-blue-600 rounded-full" 
-                          style={{ width: `${(item.count / 100) * 100}%` }}
+                          className="h-2 rounded-full" 
+                          style={{ 
+                            width: `${(item.count / 100) * 100}%`,
+                            backgroundColor: 'rgb(79, 158, 234)'
+                          }}
                         />
                       </div>
                       <span className="text-sm font-medium w-8">{item.count}</span>
@@ -144,7 +155,7 @@ const Analytics = () => {
               <div className="space-y-2">
                 <div className="text-2xl font-bold">PKR {stats.revenue.toLocaleString()}</div>
                 <p className="text-sm text-gray-600">
-                  Selected Day <span className="text-green-600">+20%</span>
+                  Selected Period <span className="text-green-600">+20%</span>
                 </p>
               </div>
             </CardHeader>
@@ -162,7 +173,7 @@ const Analytics = () => {
                     <Line 
                       type="monotone" 
                       dataKey="revenue" 
-                      stroke="#2563eb" 
+                      stroke="rgb(79, 158, 234)" 
                       strokeWidth={2}
                       dot={false}
                     />

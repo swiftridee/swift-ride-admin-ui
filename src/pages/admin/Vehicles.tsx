@@ -20,37 +20,73 @@ const Vehicles = () => {
     {
       brand: 'Toyota',
       vehicleType: 'Car',
-      rentalPlans: '12 Hour: PKR 5,000-6,500, 2 Day: PKR 9,500-12,500, 3 Day: PKR 14,000-18,000, 1 Week: PKR 28,000-36,000',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 5,000-6,500</div>
+          <div>2 Day: PKR 9,500-12,500</div>
+          <div>3 Day: PKR 14,000-18,000</div>
+          <div>1 Week: PKR 28,000-36,000</div>
+        </div>
+      ),
       status: 'Available'
     },
     {
       brand: 'Honda',
       vehicleType: 'Car',
-      rentalPlans: '12 Hour: PKR 5,000-6,500, 2 Day: PKR 9,500-12,500',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 5,000-6,500</div>
+          <div>2 Day: PKR 9,500-12,500</div>
+        </div>
+      ),
       status: 'Unavailable'
     },
     {
       brand: 'Yutong',
       vehicleType: 'Mini Bus',
-      rentalPlans: '12 Hour: PKR 17,000-19,500, 2 Day: PKR 32,000-36,000, 3 Day: PKR 46,000-51,000, 1 Week: PKR 90,000-99,000',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 17,000-19,500</div>
+          <div>2 Day: PKR 32,000-36,000</div>
+          <div>3 Day: PKR 46,000-51,000</div>
+          <div>1 Week: PKR 90,000-99,000</div>
+        </div>
+      ),
       status: 'Available'
     },
     {
-      brand: 'MAN ⭐',
+      brand: 'MAN',
       vehicleType: 'Bus',
-      rentalPlans: '12 Hour: PKR 25,000-29,000, 2 Day: PKR 48,000-56,000, 3 Day: PKR 70,000-81,000, 1 Week: PKR 130,000-144,000',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 25,000-29,000</div>
+          <div>2 Day: PKR 48,000-56,000</div>
+          <div>3 Day: PKR 70,000-81,000</div>
+          <div>1 Week: PKR 130,000-144,000</div>
+        </div>
+      ),
       status: 'Available'
     },
     {
       brand: 'Toyota Coaster',
       vehicleType: 'Coaster',
-      rentalPlans: '12 Hour: PKR 12,000-14,500, 2 Day: PKR 22,500-26,500',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 12,000-14,500</div>
+          <div>2 Day: PKR 22,500-26,500</div>
+        </div>
+      ),
       status: 'Unavailable'
     },
     {
       brand: 'Hyundai',
       vehicleType: 'Car',
-      rentalPlans: '12 Hour: PKR 5,000-6,500, 3 Day: PKR 14,000-18,000',
+      rentalPlans: (
+        <div className="space-y-1">
+          <div>12 Hour: PKR 5,000-6,500</div>
+          <div>3 Day: PKR 14,000-18,000</div>
+        </div>
+      ),
       status: 'Available'
     }
   ];
@@ -74,7 +110,7 @@ const Vehicles = () => {
     <AdminLayout>
       <div className="p-6">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Manage Cars</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Manage Vehicle</h1>
           <p className="text-gray-600 mt-2">View and manage all vehicles in the fleet</p>
         </div>
 
