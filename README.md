@@ -1,58 +1,32 @@
-# Welcome to your Lovable project
+# Swift Ride Admin Frontend
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04
+This project is the frontend for the Swift Ride Admin interface, designed to manage and monitor the Swift Ride application. It provides a comprehensive dashboard for administrators to oversee all aspects of the ride-sharing service.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Dashboard**: Real-time analytics and overview of the application, including active rides, user statistics, and revenue metrics.
+- **User Management**: Manage user accounts and permissions, including user roles, account status, and activity logs.
+- **Ride Management**: Monitor and manage ride requests and statuses, with options to view ride history, cancel rides, and handle disputes.
+- **Reports**: Generate and view reports on ride data and user activity, with customizable filters and export options.
+- **Settings**: Configure application settings and preferences, including notification settings, payment methods, and service area definitions.
 
-**Use Lovable**
+## Sub-Pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04) and start prompting.
+- **Dashboard**: Provides a quick overview of key metrics and active rides.
+- **Booking**: Manages ride bookings, including scheduling, cancellations, and modifications.
+- **Vehicle**: Displays information about available vehicles, their status, and maintenance schedules.
+- **User**: Allows administrators to view and manage user profiles, including account details and ride history.
+- **Analytical**: Offers detailed insights and analytics on ride data, user behavior, and revenue trends.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Authentication
 
-**Use your preferred IDE**
+- **Login**: Secure login page for administrators to access the admin interface.
+- **Signup**: Registration page for new administrators to create accounts.
+- **Forgot Password**: Allows administrators to reset their passwords if forgotten.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Technologies Used
 
 - Vite
 - TypeScript
@@ -60,14 +34,24 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## How to Run the Project
 
-Simply open [Lovable](https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04) and click on Share -> Publish.
+Follow these steps to run the project locally:
 
-## Can I connect a custom domain to my Lovable project?
+```sh
+# Step 1: Clone the repository.
+git clone https://github.com/swiftridee/swift-ride-admin-ui.git
 
-Yes, you can!
+# Step 2: Navigate to the project directory.
+cd swift-ride-admin-ui
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Step 3: Install the necessary dependencies.
+npm i
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# Step 4: Start the development server.
+npm run dev
+```
+
+## Deployment
+
+To deploy the project, follow the standard deployment procedures for a Vite React application.
