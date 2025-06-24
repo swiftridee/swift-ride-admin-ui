@@ -1,73 +1,125 @@
-# Welcome to your Lovable project
+# Swift Ride Admin Command Center
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04
+Swift Ride Admin Command Center is a comprehensive admin dashboard for the Swift Ride platform. It enables administrators to manage users, vehicles, bookings, analytics, and platform settings through a modern, responsive interface.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Frontend Framework:** React 18 (with TypeScript)
+- **Build Tool:** Vite
+- **UI Library:** shadcn-ui (built on top of Radix UI)
+- **Styling:** Tailwind CSS, PostCSS, CSS Modules
+- **State Management:** React Context, React Query (TanStack Query)
+- **Form Handling:** React Hook Form, Zod (validation)
+- **Charts & Analytics:** Recharts
+- **Routing:** React Router DOM v6
+- **Other Libraries:**  
+  - Axios (API requests)
+  - Lucide React (icons)
+  - Embla Carousel (carousels)
+  - Date-fns (date utilities)
+  - Sonner (notifications/toasts)
+  - Radix UI Primitives (dialogs, popovers, etc.)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features & Pages
 
-**Use your preferred IDE**
+### Public Pages
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Login (`/admin/login`):**  
+  Secure login for admin users with form validation and error handling.
+- **Signup (`/admin/signup`):**  
+  Register new admin users (if enabled).
+- **Forgot Password (`/admin/forgot-password`):**  
+  Password reset workflow for admins.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Protected Admin Pages
 
-Follow these steps:
+- **Dashboard (`/admin/dashboard`):**  
+  Overview of platform statistics: total vehicles, available/unavailable vehicles, total users, total bookings, revenue, and vehicle types.  
+  Visual charts and quick stats for at-a-glance management.
+
+- **Bookings (`/admin/bookings`):**  
+  View, filter, and manage all ride bookings.  
+  Update booking status, see booking details, and manage user/vehicle assignments.
+
+- **Vehicles (`/admin/vehicles`):**  
+  Manage the entire vehicle fleet.  
+  - Add, edit, or delete vehicles
+  - Set vehicle status (available/unavailable)
+  - Assign brands, types, locations, seats, features, images, and rental plans
+  - Enable/disable driver options and set pricing for different durations
+
+- **Users (`/admin/users`):**  
+  Manage all users on the platform.  
+  - View user details
+  - Block/unblock users
+  - See booking history and user status
+
+- **Analytics (`/admin/analytics`):**  
+  Visualize platform data with interactive charts.  
+  - Booking trends (daily, weekly, monthly, yearly)
+  - Popular vehicles
+  - Revenue analytics
+
+- **404 Not Found:**  
+  Custom error page for undefined routes.
+
+---
+
+## UI Components
+
+- **Reusable UI:**  
+  Cards, tables, dialogs, popovers, tooltips, accordions, tabs, carousels, toasts, and more.
+- **Sidebar Navigation:**  
+  Responsive sidebar for easy navigation between admin sections.
+- **Dark Mode:**  
+  Fully supported via Tailwind and shadcn-ui.
+
+---
+
+## Getting Started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/swiftridee/swift-ride-admin-ui.git
+cd swift-ride-admin-ui
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Folder Structure
 
-**Use GitHub Codespaces**
+```
+src/
+  components/    # Reusable UI components
+  hooks/         # Custom React hooks
+  lib/           # Utility functions
+  pages/         # Page components (admin and public)
+  store/         # State management (if used)
+  types/         # TypeScript types
+  utils/         # API utilities (e.g., axios)
+  index.css      # Tailwind and global styles
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## Contributing
 
-This project is built with:
+Contributions are welcome! Please open an issue or submit a pull request.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/e797422d-dba8-41ec-9a15-37d378bd2a04) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License.
